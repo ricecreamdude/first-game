@@ -1,0 +1,27 @@
+{
+  "name": "spacecataz",
+  "version": "0.0.1",
+  "description": "Game protal with user profiles",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SpaceShooterProj/first-game.git"
+  },
+  "keywords": [
+    "games",
+    "portal"
+  ],
+  "author": "James Mason, Cameron Forras, Jesse Thach, Joshua Ho, Ardian Ajvazi",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/SpaceShooterProj/first-game/issues"
+  },
+  "homepage": "https://github.com/SpaceShooterProj/first-game#readme",
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-eslint": "^2.0.0"
+  }
+}
