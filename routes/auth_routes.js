@@ -16,6 +16,7 @@ authRouter.post('/signup', jsonParser, uniqueHTTP, (req, res) => {
   newUser.save((err, data) => {
     if (err) return handleDBError(err, res);
     res.status(200).json({token: data.generateToken()});
+	});
 });
 
 authRouter.get('/signin', basicHTTP, (req, res) => {

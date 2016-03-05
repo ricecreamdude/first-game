@@ -40,14 +40,14 @@ gulp.task('lint', function(){
 
 });
 
-gulp.task('mocha', function() {
+gulp.task('test', function() {
   return gulp.src('test/*.js')
   .pipe(mocha());
 
 });
 
 gulp.task('watch', function() {
-  return gulp.watch(files, ['lint', 'mocha']);
+  return gulp.watch(files, ['lint', 'test']);
 });
 
-gulp.task('default', ['watch', 'lint', 'mocha']);
+gulp.task('default', ['watch', 'lint', 'test']);

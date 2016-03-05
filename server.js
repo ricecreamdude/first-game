@@ -7,4 +7,6 @@ var port = 3000;
 const authRouter = require(__dirname + '/routes/auth_routes');
 const publicRouter = require(__dirname + '/routes/public_routes');
 
+app.use('/api' , authRouter);
+// app.use(publicRouter);
 module.exports.server = app.listen(port, () => console.log('Server running ' + port));//eslint-disable-line
