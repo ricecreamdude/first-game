@@ -3,10 +3,11 @@ const User = require(__dirname + '/../models/user');
 const jsonParser = require('body-parser').json();
 const handleDBError = require(__dirname + '/../lib/handle_db_error');
 const basicHTTP = require(__dirname + '/../lib/basic_http');
+const uniqueHTTP = require(__dirname + '/../lib/unique_user');
 
 var authRouter = module.exports = exports = express.Router();
 
-authRouter.post('/signup', jsonParser, (req, res) => {
+authRouter.post('/signup', jsonParser, uniqueHTTP, (req, res) => {
   var newUser = new User();
 
   newUser.username = req.body.username || req.body.email;
