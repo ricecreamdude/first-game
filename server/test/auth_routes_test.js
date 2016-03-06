@@ -2,11 +2,10 @@
 const chai = require('chai').use(require('chai-http'));
 const expect = chai.expect;
 const request = chai.request;
-const jwt = require('jsonwebtoken');
 
 //Load DB Model
-var Profile = require(__dirname + '/../models/user');
-//Load Server
+var User = require(__dirname + '/../models/user');
+// Load Server
 require( __dirname + '/../server');
 
 //Set Up Test Database
@@ -24,24 +23,23 @@ describe('Auth Route Tests' , () => {
     done();
   });
 
-   it('SUCCESS: POST to /signup should generate a token' , (done) => {
-    var testProfile = {
-      username: 'MerlinMan',
-      email: 'ArthurIsDumb@camelot.com',
-      password: 'Lance1233123'
-    };
-    request(HOST)
-      .post('/api/signup')
-      .send( testProfile )
-      .end( (err , res) => {
-        expect( res.status ).to.eql(200);
-        expect( res.body.token ).to.exist;
-        done();
-      });
+  it('SUCCESS: POST to /signup should generate a token' , (done) => {
+  var testProfile = {
+    username: 'MerlinMan',
+    email: 'ArthurIsDumb@camelot.com',
+    password: 'Lance1233123'
+  };
+  request(HOST)
+    .post('/api/signup')
+    .send( testProfile )
+    .end( (err , res) => {
+      expect( res.status ).to.eql(200);
+      expect( res.body.token ).to.exist;
+      done();
+    });
   });
 
   it('ERROR: POST to /signup should respond error to bad data' , (done) => {
-
     var testProfile = {
       username: 'Mer',
       email: 'xXArthurIsDumbXx@camelot.com',
