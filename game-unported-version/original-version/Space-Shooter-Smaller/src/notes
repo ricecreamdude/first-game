@@ -18,3 +18,18 @@ SpaceShooter.js
     -checkCollision fn checks if the object has collided with another object.
     -collision fn does nothing.
     -destroy fn calls remove fn.
+
+SpaceShooter.Player.js
+  -contains bullets and ship constructors and related functions.
+
+SpaceShooter.Assets.js
+  -contains background, star, explosion, sparkles, text, textScore, textBonusScore, Bonus, BonusGun, BonusShield, BonusMoney constructors.
+
+SpaceShooter.Enemies.js
+  -contains enemy, enemyBigShip, enemyAsteroid, and enemyUfo constructors.
+
+SpaceShooter.Levels.js
+  -contains level and level1 constructors, soundMuteUnmute, soundDecreaseVolume, and soundIncreaseVolume functions, and the global var: varClearTimeout.
+
+SpaceShooter.Tools.js
+  -contains tools constructor.
