@@ -1,0 +1,20 @@
+SpaceShooter.js
+  SpaceShooter constructor
+    -game settings
+    -fn: update
+    -fn: addScore
+    -fn: removeLife
+  SpaceShooter Element constructor
+    -essentially contains the instance variables used by the game object.  Elements are things in the game.
+  SpaceShooter Element Prototype
+    -contains all the functionality related to a game object.
+    -the init function sets up the object textures using Pixi and sets the object dimensions.
+    -reset fn does nothing.
+    -add fn adds the game object to the stage objects array.
+    -add child fn adds a child object to the game object.
+    -remove fn removes the game object from the stage objects array.  Calls an onRemove fn at the end of it.
+    -onRemove fn does nothing.
+    -update fn sets the current texture (if there are more than one associated with the game object), checks for collisions with objects on its collisions list (array), then calls the collision and reset fns if there is a collision, immediately returns false if the object's visible property is set to false.
+    -checkCollision fn checks if the object has collided with another object.
+    -collision fn does nothing.
+    -destroy fn calls remove fn.

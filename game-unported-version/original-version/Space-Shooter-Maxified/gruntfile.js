@@ -24,12 +24,20 @@ module.exports = function(grunt) {
             }
         },
         copy: {
-            main: {
+            assets: {
                 src: 'src/assets/*',
                 dest: 'build/assets/',
                 flatten: true,
                 expand: true,
                 filter: 'isFile'
+            },
+            html: {
+              src: 'src/index.html',
+              dest: 'build/index.html'
+            },
+            css: {
+              src: 'src/game.css',
+              dest: 'build/game.css'
             }
         }
     });
