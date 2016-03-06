@@ -29,9 +29,9 @@ var SpaceShooter = {
         assetsDir: 'assets/'
     },
     objects: [],
-    scoreCurrency: '', // Prefix for score. e.g. € or $
+    scoreCurrency: 'Points ', // Prefix for score. e.g. € or $
     score: 0,
-    lives: 5,
+    lives: 10,
     lifeDudes: [],
     LightPos: [
         -.5,
