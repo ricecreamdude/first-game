@@ -1,3 +1,5 @@
+//Removed from Project Scope
+
 // //Testing framework
 // const chai = require('chai');
 // const chaiHttp = require('chai-http');
@@ -29,23 +31,23 @@
 //   });
 // });
 //
-// //Needs edits
-// // describe('JSON Web Token Auth' , () => {
-// //   it('SUCCESS: should create a token' , () => {
-// //     var successReq = {
-// //       headers: {
-// //         token: {}
-// //       }
-// //     };
-// //     jwtAuth()
-// //   };
-// //   it('ERROR: should error if user does not exist ' , () => {
-// //     // return res.status(401).json({msg: 'authentication failed'});
-// //   });
-// //   it('ERROR: should error if token is invalid' , () => {
-// //
-// //   });
-// // });
+// // Needs edits
+// describe('JSON Web Token Auth' , () => {
+//   it('SUCCESS: should create a token' , () => {
+//     var successReq = {
+//       headers: {
+//         token: {}
+//       }
+//     };
+//     jwtAuth()
+//   });
+//   it('ERROR: should error if user does not exist ' , () => {
+//     // return res.status(401).json({msg: 'authentication failed'});
+//   });
+//   it('ERROR: should error if token is invalid' , () => {
+//
+//   });
+// });
 //
 // describe('Unique User Unit Test' , () => {
 //   it('should successfully verify a unique user' , () => {
@@ -60,7 +62,7 @@
 //     };
 //
 //
-//     expect(uniqueUser()).to.be.typeof(function);
+//     expect( typeof uniqueUser() ).to.be('function');
 //   });
 //   it('should error if checked user already exists' , () => {
 //
