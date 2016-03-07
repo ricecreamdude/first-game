@@ -31,16 +31,25 @@ describe('Public Routes' , () => {
     done();
   })
 
-  it('should reply to a valid GET request with a username' , (done) => {
-    //Authentication is failing through jwt_auth
+  it('SUCCESS: should reply to a valid GET request with a username' , (done) => {
+
     request(HOST)
       .get('/api/currentuser')
       .set('token' , this.token)
-      // .auth('publicRouteName','testPass')
       .end( (err, res) => {
         expect(res.status).to.eql(200);
         expect(res.body.username).to.eql('publicRouteName');
         done();
       });
   });
+
+  it('ERROR: should fail with a bad token' , (done) => {
+    //removed the token here to induce failure
+    request(HOST)
+      .get('/api/currentuser')
+      .end( (err, res) => {
+        expect(res.status).to.eql(401);
+        done();
+      });
+  })
 });

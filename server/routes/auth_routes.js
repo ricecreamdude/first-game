@@ -26,9 +26,11 @@ authRouter.get('/signin', basicHTTP, (req, res) => {
       return res.status(401).json({msg: 'invalid HTTP'});
     }
 
-    if (!user) return res.status(401).json({msg: 'no such user'});
-
-    if (!user.comparePassword(req.basicHTTP.password)) return res.status(401).json({msg: 'Password doesnt match '});
+    if (!user) {
+      console.log(req.basicHTTP);
+      return res.status(401).json({msg: 'no such user'});
+    }
+    if (!user.comparePassword(req.basicHTTP.password)) return res.status(401).json({msg: 'Password doesnt match'});
 
     res.json({token: user.generateToken()});
   });
