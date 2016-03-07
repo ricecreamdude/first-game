@@ -108,22 +108,6 @@ SpaceShooter.EnemyAsteroid.prototype.init = function () {
 };
 SpaceShooter.EnemyAsteroid.prototype.destroy = function () {
   var destroyed = SpaceShooter.Enemy.prototype.destroy.call(this);
-  if (destroyed != false) {
-    achievements.asteroidsKilled++;
-    if (achievements.asteroidsKilled == 10) {
-      for (var i = 0; i < players.length; i++) {
-        var jsonData = {
-          topic: 'game',
-          action: 'achievementUnlock',
-          data: {
-            playerId: players[i].id,
-            key: 'asteroid_fighter'
-          }
-        };
-        COUCHFRIENDS.send(jsonData);
-      }
-    }
-  }
 };
 SpaceShooter.EnemyUfo = function () {
   SpaceShooter.Enemy.call(this);
@@ -160,33 +144,4 @@ SpaceShooter.EnemyUfo.prototype.update = function (time) {
 };
 SpaceShooter.EnemyUfo.prototype.destroy = function () {
   var destroyed = SpaceShooter.Enemy.prototype.destroy.call(this);
-  if (destroyed != false) {
-    achievements.ufosKilled++;
-    if (achievements.ufosKilled == 10) {
-      for (var i = 0; i < players.length; i++) {
-        var jsonData = {
-          topic: 'game',
-          action: 'achievementUnlock',
-          data: {
-            playerId: players[i].id,
-            key: 'not_from_this_world'
-          }
-        };
-        COUCHFRIENDS.send(jsonData);
-      }
-    }
-    if (achievements.ufosKilled == 20 && achievements.bulletHits == false) {
-      for (var i = 0; i < players.length; i++) {
-        var jsonData = {
-          topic: 'game',
-          action: 'achievementUnlock',
-          data: {
-            playerId: players[i].id,
-            key: 'bullet_dodge'
-          }
-        };
-        COUCHFRIENDS.send(jsonData);
-      }
-    }
-  }
 };
