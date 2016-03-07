@@ -40,7 +40,6 @@ SpaceShooter.Bullet.prototype.collision = function (target) {
   if (target.name == 'enemy' || target.name == 'ship') {
     SpaceShooter.Tools.addHitSparkles(this.object.position.x, this.object.position.y, this.color);
     target.damage(this.stats.damage);
-    if (target.name == 'ship') achievements.bulletHits = true;
   }
   this.reset();
 };
@@ -165,7 +164,6 @@ SpaceShooter.Ship.prototype.died = function () {
   this.object.position.y = renderer.height - this.object.height - 20;
   this.speed.x = 0;
   this.speed.y = 0;
-  vibrate(this.playerId, 600); // 36 frames on 60fps
   this.bulletLevel = 1;
   for (var i = 0; i < this.bullets.length; i++) {
     this.bullets[i].properties.speed.x = 0;

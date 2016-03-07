@@ -1,5 +1,5 @@
 window.onload = init;
-var renderer, stage, players = [], sounds = [], achievements = {};
+var renderer, stage, players = [], sounds = [];
 function init() {
   var w = Math.max(document.documentElement.clientWidth, window.innerWidth || 800);
   var h = Math.max(document.documentElement.clientHeight, window.innerHeight || 600);

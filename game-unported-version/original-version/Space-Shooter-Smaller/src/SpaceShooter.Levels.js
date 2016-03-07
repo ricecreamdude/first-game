@@ -227,7 +227,6 @@ SpaceShooter.Level1.prototype.play = function () {
     star.init();
     star.add();
   }
-  //COUCHFRIENDS.connect();
   var x = renderer.width - 20;
   var dudeTexture = PIXI.Texture.fromImage(SpaceShooter.settings.assetsDir + 'life.png');
   for (var i = 0; i < SpaceShooter.lives; i++) {
