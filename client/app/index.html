@@ -4,28 +4,14 @@
     <meta charset="utf-8">
     <title></title>
   </head>
-  <body ng-app="ngToggle">
-    <div ng-app="myApp">
-      <div ng-controller="myCtrlr">
-        <form ng-hide="showSignin" name="authForm" data-ng-submit="submit(auth)">Sign in
-          <label for="username">Username: </label>
-          <input type="text" name="username" data-ng-model="auth.username">
-          <label for="email">Email: </label>
-          <input type="text" required name="email" data-ng-model="auth.email">
-          <label for="password">Password</label>
-          <input type="password" required name="password" data-ng-model="auth.password">
-        </form>
-        <form ng-show="showSignup" name="authForm" data-ng-submit="submit(auth)">login
-          <label for="email">Email: </label>
-          <input type="text" required name="email" data-ng-model="auth.email">
-          <label for="password">Password</label>
-          <input type="password" required name="password" data-ng-model="auth.password">
-        </form>
-
-          <button ng-click="toggleSignin()">Sign up</button>
-          <button ng-click="toggleSignup()">Login</button>
-
+  <body >
+    <div ng-app="gameApp">
+      <div ng-controller="SignupController">
+        <main>
+          <section data-ng-view></section>
+        </main>
       </div>
-  </div>
+    </div>
+    <script src="bundle.js"></script>
   </body>
 </html>
