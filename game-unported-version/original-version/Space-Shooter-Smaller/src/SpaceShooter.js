@@ -33,7 +33,7 @@ var SpaceShooter = {
       }
     }
     this.score += score;
-    if (x != null && y != null) SpaceShooter.Tools.addScore(x,y,score); // Spawn text
+    if (x != null && y != null) SpaceShooter.Tools.addScore(x, y, score); // Spawn text
   },
   removeLife: function() {
   // Remove life and reset everything if lives < 0
