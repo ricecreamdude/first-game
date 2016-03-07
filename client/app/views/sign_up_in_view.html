@@ -1,4 +1,4 @@
-<!-- <form ng-hide="showSignin" name="authForm" data-ng-submit="submit(auth)">
+<form  name="authForm" data-ng-submit="submit(auth)">
   <label data-ng-if="signup" for="username">Username: </label>
   <input data-ng-if="signup" type="text" name="username" data-ng-model="auth.username">
   <label for="email">Email: </label>
@@ -8,9 +8,9 @@
   <label data-ng-if="signup" for="confirmation">Confirmation:</label>
   <input data-ng-if="signup" type="password" name="confirmation" data-ng-model="auth.confirmation">
   <button type="submit" data-ng-disabled="(signup && (auth.confirmation !== auth.password)) || authForm.$invalid">{{signup ? 'Create New User' : 'Sign In'}}</button>
-</form> -->
+</form>
 
-<form ng-hide="showSignin" name="authForm" data-ng-submit="submit(auth)">Sign up
+<!-- <form ng-hide="showSignin" name="authForm" data-ng-submit="submit(auth)">Sign up
   <label for="username">Username: </label>
   <input type="text" name="username" data-ng-model="auth.username">
   <label for="email">Email: </label>
@@ -28,4 +28,4 @@
 </form>
 
   <button ng-click="toggleSignin()">Sign up</button>
-  <button ng-click="toggleSignup()">Login</button>
+  <button ng-click="toggleSignup()">Login</button> -->

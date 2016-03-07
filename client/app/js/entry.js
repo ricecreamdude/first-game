@@ -7,8 +7,12 @@ require('./auth')(gameApp);
 
 gameApp.config(['$routeProvider', function(routes) {
   routes
-    .when('/', {
+    .when('/signup', {
       controller: 'SignupController',
+      templateUrl: '/views/sign_up_in_view.html'
+    })
+    .when('/signin', {
+      controller: 'SigninController',
       templateUrl: '/views/sign_up_in_view.html'
     })
     .otherwise({
