@@ -3,9 +3,6 @@ module.exports = function(grunt) {
     grunt.initConfig({
         pkg: grunt.file.readJSON('package.json'),
         uglify: {
-            options: {
-                banner: '/**\n * @link www.couchfriends.com\n * @license MIT\n */\n'
-            },
             build: {
                 src: [
                     'src/pixi.js',

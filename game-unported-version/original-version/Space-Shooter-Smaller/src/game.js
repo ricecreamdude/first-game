@@ -1,8 +1,6 @@
 window.onload = init;
 var renderer, stage, players = [], sounds = [], achievements = {};
 function init() {
-  //COUCHFRIENDS.settings.host = 'ws.couchfriends.com';
-  //COUCHFRIENDS.settings.port = '80';
   var w = Math.max(document.documentElement.clientWidth, window.innerWidth || 800);
   var h = Math.max(document.documentElement.clientHeight, window.innerHeight || 600);
   SpaceShooter.settings.width = w;
@@ -126,11 +124,16 @@ window.performance = window.performance || {};
 performance.now = (function() {
   return performance.now || performance.mozNow || performance.msNow || performance.oNow || performance.webkitNow || function() { return new Date().getTime(); };
 })();
+var InitializeShipActions = function(players) {
+  window.onkeypress = function(event) {
+    var char = String.fromCharCode(event.keyCode || event.charCode);
+  }
+  window.onkeyup = function(event) {
+    var char = String.fromCharCode(event.keyCode || event.charCode);
+  }
+};
 var InitializeShipMovement = function(players) {
-  var wPress = false;
-  var aPress = false;
-  var sPress = false;
-  var dPress = false;
+  var wPress = false, aPress = false, sPress = false, dPress = false;
   window.onkeypress = function(event) {
     var char = String.fromCharCode(event.keyCode || event.charCode);
     if (char === 'w') {
