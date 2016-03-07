@@ -32,7 +32,7 @@ function init() {
   };
   playerShip.playerId = id;
   players.push(player);
-  InitializeShipMovement(players);
+  InitializeShipActions(players);
 }
 function update(time) {
   requestAnimationFrame(update);
@@ -40,46 +40,6 @@ function update(time) {
   TWEEN.update(time);
   renderer.render(stage);
 }
-// COUCHFRIENDS.on('playerClickDown', function (data) {
-//   for (var i = 0; i < players.length; i++) {
-//     if (players[i].id == data.playerId) {
-//       players[i].ship.shooting = true;
-//       return;
-//     }
-//   }
-// });
-// COUCHFRIENDS.on('playerClickUp', function (data) {
-//   for (var i = 0; i < players.length; i++) {
-//     if (players[i].id == data.playerId) {
-//       players[i].ship.shooting = false;
-//       return;
-//     }
-//   }
-// });
-// COUCHFRIENDS.on('buttonDown', function (data) {
-//   for (var i = 0; i < players.length; i++) {
-//     if (players[i].id == data.playerId) {
-//       players[i].ship.shooting = true;
-//       return;
-//     }
-//   }
-// });
-// COUCHFRIENDS.on('buttonUp', function (data) {
-//   for (var i = 0; i < players.length; i++) {
-//     if (players[i].id == data.playerId) {
-//       players[i].ship.shooting = false;
-//       return;
-//     }
-//   }
-// });
-// COUCHFRIENDS.on('buttonClick', function (data) {
-//   for (var i = 0; i < players.length; i++) {
-//     if (players[i].id == data.playerId) {
-//       players[i].ship.shooting = false;
-//       return;
-//     }
-//   }
-// });
 function getRandom(min, max) {
   return Math.random() * (max - min) + min;
 }
@@ -125,17 +85,10 @@ performance.now = (function() {
   return performance.now || performance.mozNow || performance.msNow || performance.oNow || performance.webkitNow || function() { return new Date().getTime(); };
 })();
 var InitializeShipActions = function(players) {
+  var wPress = false, aPress = false, sPress = false, dPress = false, shooting = false;
   window.onkeypress = function(event) {
     var char = String.fromCharCode(event.keyCode || event.charCode);
-  }
-  window.onkeyup = function(event) {
-    var char = String.fromCharCode(event.keyCode || event.charCode);
-  }
-};
-var InitializeShipMovement = function(players) {
-  var wPress = false, aPress = false, sPress = false, dPress = false;
-  window.onkeypress = function(event) {
-    var char = String.fromCharCode(event.keyCode || event.charCode);
+    console.log('|'+char+'|'+event.keyCode+'|'+event.charCode);
     if (char === 'w') {
       wPress = true;
       players[0].ship.decelerateYSpeed = false;
@@ -152,9 +105,13 @@ var InitializeShipMovement = function(players) {
       dPress = true;
       players[0].ship.decelerateXSpeed = false;
     }
+    if (char === ' ') {
+      players[0].ship.shooting = true;
+    }
   }
   window.onkeyup = function(event) {
     var char = String.fromCharCode(event.keyCode || event.charCode);
+    console.log('|'+char+'|'+event.keyCode+'|'+event.charCode);
     if (char === 'W') {
       wPress = false;
       players[0].ship.decelerateYSpeed = true;
@@ -170,6 +127,9 @@ var InitializeShipMovement = function(players) {
     if (char === 'D') {
       dPress = false;
       players[0].ship.decelerateXSpeed = true;
+    }
+    if (char === ' ') {
+      players[0].ship.shooting = false;
     }
   }
   // Acceleration
