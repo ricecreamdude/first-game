@@ -9,7 +9,6 @@ module.exports = function(grunt) {
             build: {
                 src: [
                     'src/pixi.js',
-                    'src/howler.core.js',
                     'src/tween.js',
                     'src/randomcolor.js',
                     'src/SpaceShooter.js',
