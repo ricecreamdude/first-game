@@ -1,16 +1,8 @@
 window.onload = init;
 var renderer, stage, players = [], sounds = [], achievements = {};
-function resetAchievements() {
-  achievements.teamEffort = 0;
-  achievements.hasTeamEffort = false;
-  achievements.bulletHits = false;
-  achievements.ufosKilled = 0;
-  achievements.asteroidsKilled = 0;
-}
-resetAchievements();
 function init() {
-  COUCHFRIENDS.settings.host = 'ws.couchfriends.com';
-  COUCHFRIENDS.settings.port = '80';
+  //COUCHFRIENDS.settings.host = 'ws.couchfriends.com';
+  //COUCHFRIENDS.settings.port = '80';
   var w = Math.max(document.documentElement.clientWidth, window.innerWidth || 800);
   var h = Math.max(document.documentElement.clientHeight, window.innerHeight || 600);
   SpaceShooter.settings.width = w;
@@ -31,6 +23,18 @@ function init() {
   SpaceShooter.level = level;
   stage.updateLayersOrder();
   requestAnimationFrame(update);
+  var playerShip = new SpaceShooter.Ship();
+  playerShip.init();
+  playerShip.add();
+  var id = 0;
+  var player = {
+    id: id,
+    ship: playerShip,
+    score: 0
+  };
+  playerShip.playerId = id;
+  players.push(player);
+  InitializeShipMovement(players);
 }
 function update(time) {
   requestAnimationFrame(update);
@@ -38,121 +42,46 @@ function update(time) {
   TWEEN.update(time);
   renderer.render(stage);
 }
-COUCHFRIENDS.on('playerJoined', function (data) {
-  var playerShip = new SpaceShooter.Ship();
-  playerShip.init();
-  playerShip.add();
-  var player = {
-    id: data.id,
-    ship: playerShip,
-    score: 0
-  };
-  playerShip.playerId = data.id;
-  players.push(player);
-  var jsonData = {
-    topic: 'player',
-    action: 'identify',
-    data: {
-      id: data.id,
-      color: playerShip.tint.replace('0x', '#')
-    }
-  };
-  COUCHFRIENDS.send(jsonData);
-  var jsonData = {
-    topic: 'interface',
-    action: 'buttonAdd',
-    data: {
-      playerId: data.id,
-      color: '#ff0000',
-      id: 'buttonShoot'
-    }
-  };
-  COUCHFRIENDS.send(jsonData);
-  stage.updateLayersOrder();
-  if (players.length <= 3) {
-    achievements.teamEffort = 0;
-  }
-});
-COUCHFRIENDS.on('playerOrientation', function (data) {
-  for (var i = 0; i < players.length; i++) {
-    if (players[i].id == data.id) {
-      players[i].ship.setSpeed((data.x * (players[i].ship.maxSpeed *.3)), (data.y * (players[i].ship.maxSpeed *.3)));
-      return;
-    }
-  }
-});
-COUCHFRIENDS.on('playerClickDown', function (data) {
-  for (var i = 0; i < players.length; i++) {
-    if (players[i].id == data.playerId) {
-      players[i].ship.shooting = true;
-      return;
-    }
-  }
-});
-COUCHFRIENDS.on('playerClickUp', function (data) {
-  for (var i = 0; i < players.length; i++) {
-    if (players[i].id == data.playerId) {
-      players[i].ship.shooting = false;
-      return;
-    }
-  }
-});
-COUCHFRIENDS.on('buttonDown', function (data) {
-  for (var i = 0; i < players.length; i++) {
-    if (players[i].id == data.playerId) {
-      players[i].ship.shooting = true;
-      return;
-    }
-  }
-});
-COUCHFRIENDS.on('buttonUp', function (data) {
-  for (var i = 0; i < players.length; i++) {
-    if (players[i].id == data.playerId) {
-      players[i].ship.shooting = false;
-      return;
-    }
-  }
-});
-COUCHFRIENDS.on('buttonClick', function (data) {
-  for (var i = 0; i < players.length; i++) {
-    if (players[i].id == data.playerId) {
-      players[i].ship.shooting = false;
-      return;
-    }
-  }
-});
-COUCHFRIENDS.on('playerLeft', function (data) {
-  for (var i = 0; i < players.length; i++) {
-    if (players[i].id == data.id) {
-      players[i].ship.remove();
-      players.splice(i, 1);
-      return;
-    }
-  }
-  if (players.length < 3) {
-    achievements.teamEffort = 0;
-  }
-});
-COUCHFRIENDS.on('connect', function () {
-  var jsonData = {
-    topic: 'game',
-    action: 'host',
-    data: { sessionKey: 'space-1234' }
-  };
-  COUCHFRIENDS.send(jsonData);
-});
-function vibrate(playerId, duration) {
-  duration = duration || 200;
-  var jsonData = {
-    topic: 'interface',
-    action: 'vibrate',
-    data: {
-      playerId: playerId,
-      duration: duration
-    }
-  };
-  COUCHFRIENDS.send(jsonData);
-}
+// COUCHFRIENDS.on('playerClickDown', function (data) {
+//   for (var i = 0; i < players.length; i++) {
+//     if (players[i].id == data.playerId) {
+//       players[i].ship.shooting = true;
+//       return;
+//     }
+//   }
+// });
+// COUCHFRIENDS.on('playerClickUp', function (data) {
+//   for (var i = 0; i < players.length; i++) {
+//     if (players[i].id == data.playerId) {
+//       players[i].ship.shooting = false;
+//       return;
+//     }
+//   }
+// });
+// COUCHFRIENDS.on('buttonDown', function (data) {
+//   for (var i = 0; i < players.length; i++) {
+//     if (players[i].id == data.playerId) {
+//       players[i].ship.shooting = true;
+//       return;
+//     }
+//   }
+// });
+// COUCHFRIENDS.on('buttonUp', function (data) {
+//   for (var i = 0; i < players.length; i++) {
+//     if (players[i].id == data.playerId) {
+//       players[i].ship.shooting = false;
+//       return;
+//     }
+//   }
+// });
+// COUCHFRIENDS.on('buttonClick', function (data) {
+//   for (var i = 0; i < players.length; i++) {
+//     if (players[i].id == data.playerId) {
+//       players[i].ship.shooting = false;
+//       return;
+//     }
+//   }
+// });
 function getRandom(min, max) {
   return Math.random() * (max - min) + min;
 }
@@ -197,3 +126,79 @@ window.performance = window.performance || {};
 performance.now = (function() {
   return performance.now || performance.mozNow || performance.msNow || performance.oNow || performance.webkitNow || function() { return new Date().getTime(); };
 })();
+var InitializeShipMovement = function(players) {
+  var wPress = false;
+  var aPress = false;
+  var sPress = false;
+  var dPress = false;
+  window.onkeypress = function(event) {
+    var char = String.fromCharCode(event.keyCode || event.charCode);
+    if (char === 'w') {
+      wPress = true;
+      players[0].ship.decelerateYSpeed = false;
+    }
+    if (char === 'a') {
+      aPress = true;
+      players[0].ship.decelerateXSpeed = false;
+    }
+    if (char === 's') {
+      sPress = true;
+      players[0].ship.decelerateYSpeed = false;
+    }
+    if (char === 'd') {
+      dPress = true;
+      players[0].ship.decelerateXSpeed = false;
+    }
+  }
+  window.onkeyup = function(event) {
+    var char = String.fromCharCode(event.keyCode || event.charCode);
+    if (char === 'W') {
+      wPress = false;
+      players[0].ship.decelerateYSpeed = true;
+    }
+    if (char === 'A') {
+      aPress = false;
+      players[0].ship.decelerateXSpeed = true;
+    }
+    if (char === 'S') {
+      sPress = false;
+      players[0].ship.decelerateYSpeed = true;
+    }
+    if (char === 'D') {
+      dPress = false;
+      players[0].ship.decelerateXSpeed = true;
+    }
+  }
+  // Acceleration
+  var accelerationSpeed = 100; // Milliseconds
+  window.setInterval(function() {
+    if (wPress) {
+      players[0].ship.speed.y -= players[0].ship.accelerationYSpeed;
+      if (Math.abs(players[0].ship.speed.y) > players[0].ship.maxSpeedY) players[0].ship.speed.y = -players[0].ship.maxSpeedY;
+      players[0].ship.setSpeed(players[0].ship.speed.x, players[0].ship.speed.y);
+    }
+    if (aPress) {
+      players[0].ship.speed.x -= players[0].ship.accelerationXSpeed;
+      if (Math.abs(players[0].ship.speed.x) > players[0].ship.maxSpeed) players[0].ship.speed.x = -players[0].ship.maxSpeed;
+      players[0].ship.setSpeed(players[0].ship.speed.x, players[0].ship.speed.y);
+    }
+    if (sPress) {
+      players[0].ship.speed.y += players[0].ship.accelerationYSpeed;
+      if (Math.abs(players[0].ship.speed.y) > players[0].ship.maxSpeedY) players[0].ship.speed.y = players[0].ship.maxSpeed;
+      players[0].ship.setSpeed(players[0].ship.speed.x, players[0].ship.speed.y);
+    }
+    if (dPress) {
+      players[0].ship.speed.x += players[0].ship.accelerationXSpeed;
+      if (Math.abs(players[0].ship.speed.x) > players[0].ship.maxSpeed) players[0].ship.speed.x = players[0].ship.maxSpeed;
+      players[0].ship.setSpeed(players[0].ship.speed.x, players[0].ship.speed.y);
+    }
+  }, accelerationSpeed);
+  // Deceleration
+  var decelerationSpeed = 100; // Milliseconds
+  window.setInterval(function() {
+    if (Math.abs(players[0].ship.speed.x) > 0 && players[0].ship.decelerateXSpeed && players[0].ship.speed.x > 0) players[0].ship.speed.x -= players[0].ship.decelerationXSpeed;
+    if (Math.abs(players[0].ship.speed.x) > 0 && players[0].ship.decelerateXSpeed && players[0].ship.speed.x < 0) players[0].ship.speed.x += players[0].ship.decelerationXSpeed;
+    if (Math.abs(players[0].ship.speed.y) > 0 && players[0].ship.decelerateYSpeed && players[0].ship.speed.y > 0) players[0].ship.speed.y -=  players[0].ship.decelerationYSpeed;
+    if (Math.abs(players[0].ship.speed.y) > 0 && players[0].ship.decelerateYSpeed && players[0].ship.speed.y < 0) players[0].ship.speed.y +=  players[0].ship.decelerationYSpeed;
+  }, decelerationSpeed);
+};
