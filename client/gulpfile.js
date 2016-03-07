@@ -2,9 +2,9 @@ const gulp = require('gulp');
 const eslint = require('gulp-eslint');
 const webpack = require('webpack-stream');
 const html = require('html-loader');
-const sass = require('gulp-sass');
-const maps = require('gulp-sourcemaps');
-const minifyCss = require('gulp-minify-css');
+// const sass = require('gulp-sass');
+// const maps = require('gulp-sourcemaps');
+// const minifyCss = require('gulp-minify-css');
 
 const jsFiles = ['./*.js', 'app/**/*.js', '!node_modules/**'];
 const clientScripts = ['app/js/entry.js'];
@@ -17,14 +17,14 @@ gulp.task('html:dev', () => {
     .pipe(gulp.dest(__dirname + '/build'));
 });
 
-gulp.task('sass:dev', () => {
-  gulp.src(sassFiles)
-    .pipe(maps.init())
-    .pipe(sass().on('error', sass.logError))
-    .pipe(minifyCss())
-    .pipe(maps.write('./'))
-    .pipe(gulp.dest(__dirname + '/build'))
-});
+// gulp.task('sass:dev', () => {
+//   gulp.src(sassFiles)
+//     .pipe(maps.init())
+//     .pipe(sass().on('error', sass.logError))
+//     .pipe(minifyCss())
+//     .pipe(maps.write('./'))
+//     .pipe(gulp.dest(__dirname + '/build'))
+// });
 
 gulp.task('webpack:dev', () => {
   gulp.src(clientScripts)
@@ -36,11 +36,11 @@ gulp.task('webpack:dev', () => {
     .pipe(gulp.dest('build/'));
 });
 
-gulp.task('lint', () => {
-  return gulp.src(jsFiles)
-    .pipe(eslint())
-    .pipe(eslint.format());
-});
+// gulp.task('lint', () => {
+//   return gulp.src(jsFiles)
+//     .pipe(eslint())
+//     .pipe(eslint.format());
+// });
 
 gulp.task('webpack:test', () => {
   gulp.src(__dirname + '/test/test_entry.js')
@@ -64,9 +64,9 @@ gulp.task('webpack:test', () => {
     .pipe(gulp.dest('test/'));
 });
 
-gulp.task('watch', () => {
-  gulp.watch([jsFiles, staticFiles, sassFiles], ['build:dev']);
-});
+// gulp.task('watch', () => {
+//   gulp.watch([jsFiles, staticFiles], ['build:dev']);
+// });
 
-gulp.task('build:dev', ['watch', 'lint', 'html:dev', 'webpack:dev', 'sass:dev']);
+gulp.task('build:dev', ['html:dev', 'webpack:dev']);
 gulp.task('default', ['build:dev']);

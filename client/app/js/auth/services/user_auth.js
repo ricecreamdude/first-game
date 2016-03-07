@@ -44,7 +44,7 @@ module.exports = function(app) {
       },
 
       getUsername: function(callback) {
-        callback callback || function() {};
+        callback = callback || function() {};
         $http({
           method: 'GET',
           url: 'http://localhost:3000/api/currentuser',
