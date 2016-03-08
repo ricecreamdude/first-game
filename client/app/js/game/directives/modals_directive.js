@@ -12,16 +12,12 @@ module.exports = function(app) {
         }
       );
 
-      $rootScope.$on(
-        "modals.open",
-        function handleModalOpenEvent(event, modalType) {
+      $rootScope.$on("modals.open", function handleModalOpenEvent(event, modalType) {
           scope.subview = modalType;
         }
       );
 
-      $rootScope.$on(
-        "modals.close",
-        function handleModalCloseEvent(event) {
+      $rootScope.$on("modals.close", function handleModalCloseEvent(event) {
           scope.subview = null;
         }
       );
