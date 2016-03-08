@@ -1,6 +1,7 @@
 <nav>
   <a ng-href="/#/signup" ng-if="!signup">Sign-Up</a>
   <a ng-href="/#/" ng-if="signup">Login</a>
+
 </nav>
 
 <form  name="authForm" data-ng-submit="submit(auth)">
@@ -14,3 +15,5 @@
   <input data-ng-if="signup" type="password" name="confirmation" data-ng-model="auth.confirmation">
   <button type="submit" data-ng-disabled="(signup && (auth.confirmation !== auth.password)) || authForm.$invalid">{{signup ? 'Create New User' : 'Sign In'}}</button>
 </form>
+<br />
+<a ng-href="/#/game" >Guest</a>
