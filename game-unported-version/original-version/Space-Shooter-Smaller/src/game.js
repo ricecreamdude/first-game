@@ -88,7 +88,7 @@ var InitializeShipActions = function(players) {
   var wPress = false, aPress = false, sPress = false, dPress = false, shooting = false;
   window.onkeypress = function(event) {
     var char = String.fromCharCode(event.keyCode || event.charCode);
-    console.log('|'+char+'|'+event.keyCode+'|'+event.charCode);
+    // console.log('|'+char+'|'+event.keyCode+'|'+event.charCode);
     if (char === 'w') {
       wPress = true;
       players[0].ship.decelerateYSpeed = false;
@@ -111,7 +111,7 @@ var InitializeShipActions = function(players) {
   }
   window.onkeyup = function(event) {
     var char = String.fromCharCode(event.keyCode || event.charCode);
-    console.log('|'+char+'|'+event.keyCode+'|'+event.charCode);
+    // console.log('|'+char+'|'+event.keyCode+'|'+event.charCode);
     if (char === 'W') {
       wPress = false;
       players[0].ship.decelerateYSpeed = true;

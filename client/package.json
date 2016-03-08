@@ -24,7 +24,10 @@
   "dependencies": {
     "angular-animate": "^1.5.0",
     "bulma": "0.0.16",
-    "express": "^4.13.4"
+    "express": "^4.13.4",
+    "angular-local-storage": "^0.2.6",
+    "express": "^4.13.4",
+    "oclazyload": "^1.0.9"
   },
   "devDependencies": {
     "angular": "^1.5.0",
