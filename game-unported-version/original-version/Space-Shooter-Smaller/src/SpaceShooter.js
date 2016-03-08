@@ -1,3 +1,4 @@
+var numberOfLives = 1;
 var SpaceShooter = {
   settings: {
     width: 1024,
@@ -7,8 +8,9 @@ var SpaceShooter = {
   objects: [],
   scoreCurrency: 'Points ', // Prefix for score.
   score: 0,
-  lives: 10,
+  lives: numberOfLives,
   lifeDudes: [],
+  level: null,
   LightPos: [-0.5, 0, 0.5],
   update: function (time) {
     for (var i = 0; i < this.objects.length; i++)
@@ -19,18 +21,36 @@ var SpaceShooter = {
     if (x != null && y != null) SpaceShooter.Tools.addScore(x, y, score); // Spawn text
   },
   removeLife: function() {
-  // Remove life and reset everything if lives < 0
-  this.lives--;
-  if (this.lives < 0) {
-    this.score = 0;
-    this.lives = 5;
-    for (var i = 0; i < this.lifeDudes.length; i++) {
-      this.lifeDudes[i].visible = true;
-    }
+    // Remove life and reset everything if lives < 0
+    this.lives--;
+    if (this.lives < 0) {
+      var thisGame = this;
+      var gameOverWindow = document.createElement('section');
+      gameOverWindow.className = 'game-over-window';
+      gameOverWindow.id = 'game-over';
+      var gameOverTextArea = document.createElement('h1');
+      gameOverTextArea.className = 'game-over-text-area';
+      var gameOverText = document.createTextNode('GAME OVER');
+      var gameResetButton = document.createElement('button');
+      gameResetButton.className = 'game-over-reset-button';
+      gameResetButton.onclick = function() {
+        thisGame.score = 0;
+        thisGame.lives = numberOfLives;
+        for (var i = 0; i < thisGame.lifeDudes.length; i++) thisGame.lifeDudes[i].visible = true;
+        thisGame.level.reset();
+        var gameOverWindowElement = document.getElementById('game-over');
+        gameOverWindowElement.parentNode.removeChild(gameOverWindowElement);
+      };
+      var gameResetButtonText = document.createTextNode('Restart');
+      gameResetButton.appendChild(gameResetButtonText);
+      gameOverTextArea.appendChild(gameOverText);
+      gameOverWindow.appendChild(gameOverTextArea);
+      gameOverWindow.appendChild(gameResetButton);
+      var gameWindow = document.getElementById('game');
+      gameWindow.appendChild(gameOverWindow);
     } else {
       this.lifeDudes[this.lives].visible = false;
     }
-    this.level.reset();
   }
 };
 
