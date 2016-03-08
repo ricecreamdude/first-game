@@ -23,6 +23,7 @@
   "homepage": "https://github.com/SpaceShooterProj/first-game#readme",
   "dependencies": {
     "angular-animate": "^1.5.0",
+    "bulma": "0.0.16",
     "express": "^4.13.4"
   },
   "devDependencies": {
