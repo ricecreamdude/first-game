@@ -15,25 +15,8 @@ var SpaceShooter = {
       this.objects[i].update(time);
   },
   addScore: function (score, x, y) {
-    if (players.length >= 3) {
-      achievements.teamEffort += score;
-      if (achievements.hasTeamEffort == false && achievements.teamEffort > 25000) {
-        achievements.hasTeamEffort = true;
-        for (var i = 0; i < players.length; i++) {
-          var jsonData = {
-            topic: 'game',
-            action: 'achievementUnlock',
-            data: {
-              playerId: players[i].id,
-              key: 'team_effort'
-            }
-          };
-          COUCHFRIENDS.send(jsonData);
-        }
-      }
-    }
     this.score += score;
-    if (x != null && y != null) SpaceShooter.Tools.addScore(x,y,score); // Spawn text
+    if (x != null && y != null) SpaceShooter.Tools.addScore(x, y, score); // Spawn text
   },
   removeLife: function() {
   // Remove life and reset everything if lives < 0
@@ -44,7 +27,6 @@ var SpaceShooter = {
     for (var i = 0; i < this.lifeDudes.length; i++) {
       this.lifeDudes[i].visible = true;
     }
-    resetAchievements();
     } else {
       this.lifeDudes[this.lives].visible = false;
     }
@@ -67,7 +49,6 @@ SpaceShooter.Element = function () {
     this.tint = null;
     this.size = { width: 0, height: 0}
 };
-
 SpaceShooter.Element.prototype = {
   init: function (textures) {
     if (textures == null) {
