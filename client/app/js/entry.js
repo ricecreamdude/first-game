@@ -10,6 +10,9 @@ require('./auth')(gameApp);
 gameApp.config(['$routeProvider', function(routes) {
   routes
     .when('/', {
+      templateUrl: '/views/home.html'
+    })
+    .when('/modal', {
       controller: 'GameController',
       templateUrl: '/views/menu_modal_view.html'
     })
