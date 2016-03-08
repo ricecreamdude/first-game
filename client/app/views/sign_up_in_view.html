@@ -1,5 +1,6 @@
 <nav>
-  <a ng-href="/#/">Home</a>
+  <a ng-href="/#/signup" ng-if="!signup">Sign-Up</a>
+  <a ng-href="/#/" ng-if="signup">Login</a>
 </nav>
 
 <form  name="authForm" data-ng-submit="submit(auth)">

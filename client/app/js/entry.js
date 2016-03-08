@@ -2,12 +2,13 @@ const angular = require('angular');
 require('angular-route');
 //Animations
 require('angular-animate');
+require('angular-css');
 
 //Used to run game.js
 require('angular-local-storage');
 require('oclazyload');
 
-const gameApp = angular.module('gameApp', ['ngRoute' , 'oc.lazyLoad', 'LocalStorageModule' , 'ngAnimate']);
+const gameApp = angular.module('gameApp', ['ngRoute' , 'oc.lazyLoad', 'LocalStorageModule' , 'ngAnimate', 'door3.css']);
 
 require('./services')(gameApp);
 require('./game')(gameApp);
@@ -25,9 +26,10 @@ gameApp.config(['$ocLazyLoadProvider' , '$routeProvider', 'localStorageServicePr
   }); //end
 
   routes
-    .when('/', {
-      templateUrl: '/views/home.html'
-    })
+    // .when('/', {
+    //   templateUrl: '/views/home.html',
+    //   css: '/sass/styles.css'
+    // })
     .when('/modal', {
       controller: 'GameController',
       templateUrl: '/views/menu_modal_view.html'
@@ -36,7 +38,7 @@ gameApp.config(['$ocLazyLoadProvider' , '$routeProvider', 'localStorageServicePr
       controller: 'SignupController',
       templateUrl: '/views/sign_up_in_view.html'
     })
-    .when('/signin', {
+    .when('/', {
       controller: 'SigninController',
       templateUrl: '/views/sign_up_in_view.html'
     })
