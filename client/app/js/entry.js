@@ -9,12 +9,13 @@ require('oclazyload');
 
 const gameApp = angular.module('gameApp', ['ngRoute' , 'oc.lazyLoad', 'LocalStorageModule' , 'ngAnimate']);
 
-require('./services')(gameApp);
+// require('./services')(gameApp);
 require('./game')(gameApp);
 require('./auth')(gameApp);
 
 
-gameApp.config(['$ocLazyLoadProvider' , '$routeProvider', 'localStorageServiceProvider', function($ocLazyLoadProvider , routes , localStorageServiceProvider) {
+gameApp.config(['$ocLazyLoadProvider' , '$routeProvider', 'localStorageServiceProvider', function($ocLazyLoadProvider, routes ,localStorageServiceProvider) {
+
   $ocLazyLoadProvider.config({
     loadedModules: ['gameApp'] , modules: [
       {
@@ -54,3 +55,5 @@ gameApp.config(['$ocLazyLoadProvider' , '$routeProvider', 'localStorageServicePr
     });//end
 
 }]);
+
+//Source of Solution: http://stackoverflow.com/questions/29468522/angular-controller-not-loading-using-oclazyload-and-ngroute
