@@ -2,12 +2,13 @@ const angular = require('angular');
 require('angular-route');
 //Animations
 require('angular-animate');
+require('angular-css');
 
 //Used to run game.js
 require('angular-local-storage');
 require('oclazyload');
 
-const gameApp = angular.module('gameApp', ['ngRoute' , 'oc.lazyLoad', 'LocalStorageModule' , 'ngAnimate']);
+const gameApp = angular.module('gameApp', ['ngRoute' , 'oc.lazyLoad', 'LocalStorageModule' , 'ngAnimate', 'door3.css']);
 
 require('./services')(gameApp);
 require('./game')(gameApp);
