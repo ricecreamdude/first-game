@@ -34,6 +34,9 @@ gameApp.config(['$ocLazyLoadProvider' , '$routeProvider', 'localStorageServicePr
       controller: 'GameController',
       templateUrl: '/views/menu_modal_view.html'
     })
+    .when('/about', {
+      templateUrl: '/views/about.html'
+    })
     .when('/signup', {
       controller: 'SignupController',
       templateUrl: '/views/sign_up_in_view.html'
