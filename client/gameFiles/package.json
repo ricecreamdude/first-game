@@ -1,5 +1,5 @@
 {
-  "name": "spacecataz",
+  "name": "spacecataz-game",
   "version": "1.0.0",
   "description": "A 2D space shoot'em up.",
   "main": "index.js",
