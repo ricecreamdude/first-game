@@ -7,7 +7,7 @@ require('angular-animate');
 require('angular-local-storage');
 require('oclazyload');
 
-const gameApp = angular.module('gameApp', ['ngRoute' , 'oc.lazyLoad', 'LocalStorageModule , ngAnimate']);
+const gameApp = angular.module('gameApp', ['ngRoute' , 'oc.lazyLoad', 'LocalStorageModule' , 'ngAnimate']);
 
 require('./services')(gameApp);
 require('./game')(gameApp);
