@@ -3,7 +3,7 @@
   <a ng-href="#/signup">Sign up</a>
 </section> -->
 
-<section class="hero is-medium is-danger is-bold">
+<section class="hero is-medium is-danger is-bold" ng-init="isMain()">
 	<section ng-controller="authController" ng-init="updateUsername()" class="hero-header">
 		<header class="header">
 			<!-- Main container -->
