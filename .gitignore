@@ -6,4 +6,3 @@ db/
 /public/css/style.css
 coverage/
 **/test/*bundle.js
-build/
