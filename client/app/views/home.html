@@ -1,10 +1,5 @@
-<!-- <section >
-  <a ng-href="#/signin">Login</a>
-  <a ng-href="#/signup">Sign up</a>
-</section> -->
-
-<section class="hero is-medium is-danger is-bold" ng-init="isMain()">
-	<section ng-controller="authController" ng-init="updateUsername()" class="hero-header">
+<section class="hero is-medium is-danger is-bold" ng-controller="authController" ng-init="isMain()">
+	<section class="hero-header">
 		<header class="header">
 			<!-- Main container -->
 			<nav class="container">
@@ -18,12 +13,12 @@
 			  </section>
 
 			  <!-- Right side -->
-			  <section class="header-right">
+				<section class="header-right" ng-init="updateUsername()">
 					<p class="header-item" data-ng-if="username">
 						Hello {{username}}
 					</p>
 					<p class="header-item">
-						<a href data-ng-click="logout()">logout</a>
+						<a href ng-if="username" data-ng-click="logout()">logout</a>
 					</p>
 			    <p class="header-item"><a href="#/">Home</a></p>
 			    <p class="header-item"><a href="#/about">About</a></p>
