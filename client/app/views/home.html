@@ -4,7 +4,7 @@
 </section> -->
 
 <section class="hero is-medium is-danger is-bold">
-	<section class="hero-header">
+	<section ng-controller="authController" ng-init="updateUsername()" class="hero-header">
 		<header class="header">
 			<!-- Main container -->
 			<nav class="container">
@@ -12,10 +12,7 @@
 			  <section class="header-left">
 			    <section class="header-item">
 			      <p class="control is-grouped">
-			        <input class="input" type="text" placeholder="Search Games">
-			        <button class="button">
-			          Search
-			        </button>
+							Logo
 			      </p>
 			    </section>
 			  </section>
@@ -44,10 +41,35 @@
 	</section>
 </section>
 
-<section class="section">
+<section class="section" ng-init="friends = [{name:'John', phone:'555-1276'},
+                         {name:'Mary', phone:'800-BIG-MARY'},
+                         {name:'Mike', phone:'555-4321'},
+                         {name:'Adam', phone:'555-5678'},
+                         {name:'Julie', phone:'555-8765'},
+                         {name:'Juliette', phone:'555-5678'}]">
+
   <section class="container">
-    <section class="notification">
-      This container is <strong>centered</strong> on desktop.
-    </section>
+
+			<section class="columns">
+
+				<section class="column is-half is-offset-quarter">
+
+					<input ng-model="searchText" class="input" type="text" placeholder="Search Games">
+				</section>
+			</section>
+
+			<section class="columns">
+				<section class="column is-half is-offset-quarter">
+			    <section class="notification">
+						<table id="searchTextResults">
+						  <tr><th>Name</th><th>Phone</th></tr>
+						  <tr ng-repeat="friend in friends | filter:searchText">
+						    <td>{{friend.name}}</td>
+						    <td>{{friend.phone}}</td>
+						  </tr>
+			    </section>
+				</section>
+			</section>
+
   </section>
 </section>

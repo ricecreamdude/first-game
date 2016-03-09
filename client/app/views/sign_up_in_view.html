@@ -41,12 +41,13 @@
         </form>
         <br />
 
-        <p ng-if="!signup">Dont have an account? <a ng-href="/#/signup" ng-if="!signup">Sign-Up</a></p>
-        <p ng-if="signup">Have an account? <a ng-href="/#/" ng-if="signup">Login</a></p>
-
-        <div class="columns is-mobile">
-          <div class="column is-4 is-offset-10"><a ng-href="/#/game">Guest</a></div>
-        </div>
+        <section class="columns is-mobile">
+          <section class="column is-4">
+            <p ng-if="!signup">Dont have an account? <a ng-href="/#/signup" ng-if="!signup">Sign-Up</a></p>
+            <p ng-if="signup">Have an account? <a ng-href="/#/" ng-if="signup">Login</a></p>
+          </section>
+          <section class="column is-4 is-offset-6"><a ng-href="/#/game">Guest</a></section>
+        </section>
       </section>
     </section>
   </section>
