@@ -12,11 +12,6 @@ gulp.task('assets:dev', () => {
   return gulp.src(__dirname + '/src/assets/**')
     .pipe(gulp.dest(__dirname + '/../build/assets'));
 });
-gulp.task('html:dev', () => {
-  return gulp.src(__dirname + '/src/*.html')
-    .pipe(plugins.htmlmin({ collapseWhitespace: true }))
-    .pipe(gulp.dest(__dirname + '/../build/'));
-});
 gulp.task('css:dev', () => {
   return gulp.src(__dirname + '/src/*.css')
     .pipe(plugins.cssnano())

@@ -23,10 +23,6 @@ gameApp.config(['$ocLazyLoadProvider' , '$routeProvider', 'localStorageServicePr
   }); //end
 
   routes
-    // .when('/', {
-    //   templateUrl: '/views/home.html',
-    //   css: '/sass/styles.css'
-    // })
     .when('/', {
       controller: 'SigninController',
       templateUrl: '/views/sign_up_in_view.html'
@@ -38,14 +34,11 @@ gameApp.config(['$ocLazyLoadProvider' , '$routeProvider', 'localStorageServicePr
     .when('/about', {
       templateUrl: '/views/about.html'
     })
-    .when('/about', {
-      templateUrl: '/views/about.html'
-    })
     .when('/signup', {
       controller: 'SignupController',
       templateUrl: '/views/sign_up_in_view.html'
     })
-    .when('/game' , {
+    .when('/game', {
       controller: 'GameController',
       templateUrl: '/views/game_main.html',
       resolve: {
