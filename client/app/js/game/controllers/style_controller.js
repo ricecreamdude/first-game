@@ -1,6 +1,6 @@
 module.exports = function(app) {
   app.controller('StyleController', ['$scope', function($scope) {
-    $scope.mainstyle = false;
+    $scope.mainstyle = true;
 
     $scope.isMain = function() {
       $scope.mainstyle = true;

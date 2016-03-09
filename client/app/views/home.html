@@ -1,6 +1,53 @@
-<!-- <link rel="stylesheet" href="{{}}"> -->
-
-<section>
+<!-- <section >
   <a ng-href="#/signin">Login</a>
   <a ng-href="#/signup">Sign up</a>
+</section> -->
+
+<section class="hero is-medium is-danger is-bold">
+	<section class="hero-header">
+		<header class="header">
+			<!-- Main container -->
+			<nav class="container">
+			  <!-- Left side -->
+			  <section class="header-left">
+			    <section class="header-item">
+			      <p class="control is-grouped">
+			        <input class="input" type="text" placeholder="Search Games">
+			        <button class="button">
+			          Search
+			        </button>
+			      </p>
+			    </section>
+			  </section>
+
+			  <!-- Right side -->
+			  <section class="header-right">
+					<p class="header-item" data-ng-if="username">
+						Hello {{username}}
+					</p>
+					<p class="header-item">
+						<a href data-ng-click="logout()">logout</a>
+					</p>
+			    <p class="header-item"><a href="#/">Home</a></p>
+			    <p class="header-item"><a href="#/about">About</a></p>
+			    <p class="header-item"><a href="#/game">Quick Play</a></p>
+			    <!-- <p class="header-item"><a class="button is-success">New</a></p> -->
+			  </section>
+			</nav>
+		</header>
+		<section class="hero-content">
+			<section class="container">
+				<h1 class="title is-1">SPACECATAZ</h1>
+				<p class="subtitle">An app created by Team Spacecataz</p>
+			</section>
+		</section>
+	</section>
+</section>
+
+<section class="section">
+  <section class="container">
+    <section class="notification">
+      This container is <strong>centered</strong> on desktop.
+    </section>
+  </section>
 </section>
