@@ -15,7 +15,7 @@ gulp.task('assets:dev', () => {
 gulp.task('html:dev', () => {
   return gulp.src(__dirname + '/src/*.html')
     .pipe(plugins.htmlmin({ collapseWhitespace: true }))
-    .pipe(gulp.dest(__dirname + '/build'));
+    .pipe(gulp.dest(__dirname + '/../build'));
 });
 gulp.task('css:dev', () => {
   return gulp.src(__dirname + '/src/*.css')
