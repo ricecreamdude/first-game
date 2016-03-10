@@ -10,7 +10,6 @@
     </div>
   </div>
 </section>
-
 <section class="section">
   <section class="container" >
     <section class="columns is-mobile">
@@ -52,21 +51,30 @@
             <p ng-if="!signup">Dont have an account? <a ng-href="/#/signup" ng-if="!signup">Sign-Up</a></p>
             <p ng-if="signup">Have an account? <a ng-href="/#/" ng-if="signup">Login</a></p>
           </section>
-          <section class="column is-4 is-offset-6"><a ng-href="/#/game">Guest</a></section>
         </section>
       </section>
     </section>
   </section>
 </section>
-
 <footer class="footer">
-  <div class="container">
-    <div class="content is-centered">
-      <p>
-        <a class="icon" href="https://github.com/SpaceShooterProj/first-game">
-          <i class="fa fa-github"></i>
-        </a>
-      </p>
+  <div class="columns">
+    <div class="column is-4">
+    </div>
+
+    <div class="column is-2 is-offset-1">
+      <div>
+        <p>
+          <a class="icon" href="https://github.com/SpaceShooterProj/first-game">
+            <i class="fa fa-github">GitHub</i>
+          </a><br />
+          <p>&copy Spacecataz</p>
+
+        </p>
+      </div>
+    </div>
+    <div class="column is-2 is-offset-2">
+      <a class="button is-primary is-outlined" ng-href="/#/home">Home</a>
+      <a class="button is-primary is-outlined" ng-href="/#/about">About Us</a>
     </div>
   </div>
 </footer>

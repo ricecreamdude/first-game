@@ -1,5 +1,5 @@
 module.exports = function(app) {
-  app.controller('userAuthController', ['$scope', 'userAuth', '$window', function($scope, userAuth , $window) {
+  app.controller('authController', ['$scope', 'userAuth', '$window', function($scope, userAuth , $window) {
     $scope.username = null;
     $scope.token = $window.localStorage.token;
 
@@ -13,6 +13,7 @@ module.exports = function(app) {
     $scope.logout = function() {
       $scope.token = $window.localStorage.token = null;
       $scope.username = null;
+      $window.localStorage.clear();
     };
   }]);
 };
