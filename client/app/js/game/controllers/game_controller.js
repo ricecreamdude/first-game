@@ -1,15 +1,11 @@
 var angular = require('angular');
 
 module.exports = function(app) {
-  app.controller('GameController', ['$scope', '$ocLazyLoad', '$compile', '$window', '$location', function($scope , $ocLazyLoad , $compile, $window, $location) {
-    $scope.loggedIn = false;
+  app.controller('GameController', ['$scope', '$compile', '$window', '$location', function($scope, $compile, $window, $location) {
 
-    if (!$window.localStorage.token && $scope.loggedIn === false) $location.url('/');
+    if (!$window.localStorage.token) $location.url('/');
       else {
-        console.log($window.localStorage.token);
-        $scope.loggedIn = true;
         $location.url('/game');
-
       }
   }]);
 };
