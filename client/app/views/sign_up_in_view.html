@@ -44,6 +44,9 @@
         <section ng-if="userExists" class="notification is-warning">
           Username already exists – try again!
         </section>
+        <section ng-if="userWrong" class="notification is-warning">
+          User does not match our records
+        </section>
         <section class="columns is-mobile">
           <section class="column is-4">
             <p ng-if="!signup">Dont have an account? <a ng-href="/#/signup" ng-if="!signup">Sign-Up</a></p>
@@ -55,3 +58,15 @@
     </section>
   </section>
 </section>
+
+<footer class="footer">
+  <div class="container">
+    <div class="content is-centered">
+      <p>
+        <a class="icon" href="https://github.com/SpaceShooterProj/first-game">
+          <i class="fa fa-github"></i>
+        </a>
+      </p>
+    </div>
+  </div>
+</footer>
