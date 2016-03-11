@@ -4,6 +4,8 @@ module.exports = function(app) {
     $scope.userWrong = null;
     $scope.token;
 
+    var authService = Auth('/signin');
+
     $scope.submit = function(user) {
       userAuth.signIn(user, function(err, res) {
         if(err) {

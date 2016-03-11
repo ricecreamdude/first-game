@@ -15,7 +15,7 @@
     <section class="columns is-mobile">
       <section class="column is-half is-offset-quarter">
 
-        <form  name="authForm" data-ng-submit="submit(auth)">
+        <form  name="authForm" data-ng-submit="submit(auth)" ng-controller="SigninController">
           <p class="control">
             <label class="label" data-ng-if="signup" for="username">Username: </label>
             <input class="input is-primary" data-ng-if="signup" type="text" name="username" data-ng-model="auth.username">

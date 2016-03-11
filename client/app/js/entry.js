@@ -7,9 +7,8 @@ require('oclazyload');
 
 const gameApp = angular.module('gameApp', ['ngRoute' , 'oc.lazyLoad', 'LocalStorageModule']);
 
-require('./game')(gameApp);
 require('./auth')(gameApp);
-
+require('./game')(gameApp);
 
 gameApp.config(['$ocLazyLoadProvider' , '$routeProvider', 'localStorageServiceProvider', function($ocLazyLoadProvider , routes , localStorageServiceProvider) {
   $ocLazyLoadProvider.config({

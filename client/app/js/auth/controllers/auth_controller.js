@@ -1,5 +1,5 @@
 module.exports = function(app) {
-  app.controller('authController', ['$scope', 'userAuth', '$window', function($scope, userAuth , $window) {
+  app.controller('authController', ['$scope', 'userAuth', '$window', function($scope, Auth , $window) {
     $scope.username = null;
     $scope.token = $window.localStorage.token;
 

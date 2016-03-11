@@ -8,11 +8,13 @@ var handleFailure = function(callback) {
     callback(res);
   };
 };
-module.exports = function(app) {
-  app.factory('userAuth', ['$http', '$window', function($http, $window) {
-    var Auth = function(authName){
+module.exports = exports = function(app) {
+  app.factory('userAuth', ['$http', function($http) {
+
+    var Auth = function(authName) {
       this.name = authName;
     };
+
     Auth.prototype.createUser = function(data, callback){
       $http.post('http://localhost:3000/api/signup', user)
       .then(handleSuccess(callback) , handleFailure(callback));
@@ -33,9 +35,11 @@ module.exports = function(app) {
         headers: { token: tokenData }
       }).then(handleSuccess(callback) , handleFailure(callback));
     };
-    return function(authname){
+
+    return function(authName){
       return new Auth(authName);
     };
+
   }]);
 };
     //
